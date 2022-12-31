@@ -23,7 +23,7 @@ class _TodoDetailsState extends State<TodoDetails> {
       body: todo.isEmpty
           ? const Center(child: CircularProgressIndicator())
           : Container(
-              height: MediaQuery.of(context).size.height / 4,
+              height: MediaQuery.of(context).size.height / 3,
               margin: const EdgeInsets.all(30.0),
               padding: const EdgeInsets.symmetric(
                 horizontal: 20,
