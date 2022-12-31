@@ -53,9 +53,10 @@ class _GetOneTodoState extends State<GetOneTodo> {
                       ),
                     );
                   }
-                  /*if there's no error next page*/
+                  /* if value w/in range and if there's no error next page*/
                   else {
-                    if (double.parse(indexController.text) <= 200) {
+                    if (double.parse(indexController.text) <= 200 &&
+                        double.parse(indexController.text) >= 1) {
                       ScaffoldMessenger.of(context).hideCurrentSnackBar();
                       Navigator.push(
                         context,
