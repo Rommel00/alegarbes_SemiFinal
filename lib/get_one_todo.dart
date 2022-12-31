@@ -1,5 +1,6 @@
-import 'package:alegarbes_todo/todo_details.dart';
 import 'package:flutter/material.dart';
+
+import 'todo_details.dart';
 
 class GetOneTodo extends StatefulWidget {
   const GetOneTodo({Key? key}) : super(key: key);

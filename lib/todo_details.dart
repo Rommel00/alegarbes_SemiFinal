@@ -25,7 +25,10 @@ class _TodoDetailsState extends State<TodoDetails> {
           : Container(
               height: MediaQuery.of(context).size.height / 4,
               margin: const EdgeInsets.all(30.0),
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 25),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 25,
+              ),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: Colors.white,
