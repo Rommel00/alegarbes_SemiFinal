@@ -1,3 +1,4 @@
+import 'package:alegarbes_todo/todo_details.dart';
 import 'package:flutter/material.dart';
 
 class GetOneTodo extends StatefulWidget {
@@ -18,7 +19,6 @@ class _GetOneTodoState extends State<GetOneTodo> {
         children: [
           /*heading text*/
           const Text("Input number (1-200)"),
-
           /*input field*/
           TextField(
             controller: indexController,
@@ -34,7 +34,49 @@ class _GetOneTodoState extends State<GetOneTodo> {
             margin: const EdgeInsets.only(top: 25),
             child: ElevatedButton(
               onPressed: () {
-                print(indexController.text);
+                /*show message if empty*/
+                if (indexController.text.isEmpty) {
+                  ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text("number field is required."),
+                    ),
+                  );
+                } else {
+                  /*check if the input is valid*/
+                  if (double.tryParse(indexController.text) == null) {
+                    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text("Please enter a valid number"),
+                      ),
+                    );
+                  }
+                  /*if there's no error next page*/
+                  else {
+                    if (double.parse(indexController.text) <= 200) {
+                      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              TodoDetails(number: indexController.text),
+                        ),
+                      );
+                    }
+                    /*if the input value is out of range then show error*/
+                    else {
+                      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text(
+                            "range 1 - 200 only",
+                          ),
+                        ),
+                      );
+                    }
+                  }
+                }
               },
               child: const Text("Submit"),
             ),
