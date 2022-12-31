@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'get_all_todos.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -42,7 +44,7 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
         body: TabBarView(
           controller: tabController,
           children: const [
-            Center(child: Icon(Icons.home)),
+            Center(child: GetAllTodos()),
             Center(child: Icon(Icons.account_circle))
           ],
         ),
