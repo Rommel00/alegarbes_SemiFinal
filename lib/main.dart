@@ -26,28 +26,37 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.amber,
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Alegarbes Todo"),
-          bottom: TabBar(
+    return Listener(
+      onPointerDown: (_) {
+        /*to hide the keyboard*/
+        FocusScopeNode currentFocus = FocusScope.of(context);
+        if (!currentFocus.hasPrimaryFocus) {
+          currentFocus.focusedChild?.unfocus();
+        }
+      },
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.amber,
+        ),
+        home: Scaffold(
+          appBar: AppBar(
+            title: const Text("Alegarbes Todo"),
+            bottom: TabBar(
+              controller: tabController,
+              tabs: const [
+                Tab(child: Text('Get All Todos')),
+                Tab(child: Text('Get One Todo')),
+              ],
+            ),
+          ),
+          body: TabBarView(
             controller: tabController,
-            tabs: const [
-              Tab(child: Text('Get All Todos')),
-              Tab(child: Text('Get One Todo')),
+            children: const [
+              Center(child: GetAllTodos()),
+              Center(child: GetOneTodo())
             ],
           ),
-        ),
-        body: TabBarView(
-          controller: tabController,
-          children: const [
-            Center(child: GetAllTodos()),
-            Center(child: GetOneTodo())
-          ],
         ),
       ),
     );
