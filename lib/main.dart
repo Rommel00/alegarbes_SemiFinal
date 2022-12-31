@@ -1,3 +1,4 @@
+import 'package:alegarbes_todo/get_one_todo.dart';
 import 'package:flutter/material.dart';
 
 import 'get_all_todos.dart';
@@ -45,7 +46,7 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
           controller: tabController,
           children: const [
             Center(child: GetAllTodos()),
-            Center(child: Icon(Icons.account_circle))
+            Center(child: GetOneTodo())
           ],
         ),
       ),
